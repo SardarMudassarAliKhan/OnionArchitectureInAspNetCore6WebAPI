@@ -1,6 +1,7 @@
 using DomainLayer.Data;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RepositoryLayer.IRepository;
 using RepositoryLayer.Repository;
 using ServiceLayer.CustomServices;
@@ -15,7 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c=>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ESports Shop Product Microservice: Onion Architecture", Version = "v2" });
+});
 #region Service Injected
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICustomService<Product>,ProductService>();

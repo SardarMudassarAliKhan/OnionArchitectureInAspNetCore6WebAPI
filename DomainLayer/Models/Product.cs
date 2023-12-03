@@ -11,6 +11,5 @@ namespace DomainLayer.Models
         public string? Varient { get; set; }
         public string? SKU { get; set; }
         public string? Quantity { get; set; }
-        public int? Age { get; set; }
     }
 }
