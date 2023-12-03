@@ -1,44 +1,39 @@
 ﻿using DomainLayer.Models;
 using RepositoryLayer.IRepository;
 using ServiceLayer.ICustomServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceLayer.CustomServices
 {
-    public class SubjectGpasService : ICustomService<SubjectGpas>
+    public class ProductService : ICustomService<Product>
     {
-        private readonly IRepository<SubjectGpas> _studentRepository;
-        public SubjectGpasService(IRepository<SubjectGpas> studentRepository)
+        private readonly IRepository<Product> _studentRepository;
+        public ProductService(IRepository<Product> studentRepository)
         {
             _studentRepository = studentRepository;
         }
-        public void Delete(SubjectGpas entity)
+        public void Delete(Product entity)
         {
             try
             {
-                if (entity != null)
+                if(entity != null)
                 {
                     _studentRepository.Delete(entity);
                     _studentRepository.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;
             }
         }
 
-        public SubjectGpas Get(int Id)
+        public Product Get(int Id)
         {
             try
             {
                 var obj = _studentRepository.Get(Id);
-                if (obj != null)
+                if(obj != null)
                 {
                     return obj;
                 }
@@ -48,19 +43,19 @@ namespace ServiceLayer.CustomServices
                 }
 
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;
             }
         }
 
-        public IEnumerable<SubjectGpas> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             try
             {
                 var obj = _studentRepository.GetAll();
-                if (obj != null)
+                if(obj != null)
                 {
                     return obj;
                 }
@@ -69,57 +64,57 @@ namespace ServiceLayer.CustomServices
                     return null;
                 }
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;
             }
         }
 
-        public void Insert(SubjectGpas entity)
+        public void Insert(Product entity)
         {
             try
             {
-                if (entity != null)
+                if(entity != null)
                 {
                     _studentRepository.Insert(entity);
                     _studentRepository.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;
             }
         }
 
-        public void Remove(SubjectGpas entity)
+        public void Remove(Product entity)
         {
             try
             {
-                if (entity != null)
+                if(entity != null)
                 {
                     _studentRepository.Remove(entity);
                     _studentRepository.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;
             }
         }
-        public void Update(SubjectGpas entity)
+        public void Update(Product entity)
         {
             try
             {
-                if (entity != null)
+                if(entity != null)
                 {
                     _studentRepository.Update(entity);
                     _studentRepository.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch(Exception)
             {
 
                 throw;

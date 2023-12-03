@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
@@ -13,6 +8,6 @@ namespace DomainLayer.Models
         public int Id { get; set; }
         public string? ResultStatus { get; set; }
         public int StudentId { get; set; }
-        public Student Students { get; set; }
+        public Product Students { get; set; }
     }
 }

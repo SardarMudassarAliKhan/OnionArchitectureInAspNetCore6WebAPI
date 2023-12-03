@@ -2,11 +2,6 @@
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repository
 {
@@ -27,7 +22,7 @@ namespace RepositoryLayer.Repository
 
         public void Delete(T entity)
         {
-            if (entity == null)
+            if(entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
@@ -47,17 +42,17 @@ namespace RepositoryLayer.Repository
 
         public void Insert(T entity)
         {
-            if (entity == null)
+            if(entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-             entities.Add(entity);
+            entities.Add(entity);
             _applicationDbContext.SaveChanges();
         }
 
         public void Remove(T entity)
         {
-            if (entity == null)
+            if(entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
@@ -71,7 +66,7 @@ namespace RepositoryLayer.Repository
 
         public void Update(T entity)
         {
-            if (entity == null)
+            if(entity == null)
             {
                 throw new ArgumentNullException("entity");
             }

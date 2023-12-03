@@ -1,10 +1,5 @@
 ﻿using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DomainLayer.Data
 {
@@ -18,9 +13,7 @@ namespace DomainLayer.Data
         {
             base.OnModelCreating(builder);
         }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Departments> Departments { get; set; }
-        public DbSet<SubjectGpas> SubjectGpas { get; set; }
+        public DbSet<Product> Students { get; set; }
         public DbSet<Resultss> Results { get; set; }
     }
 }

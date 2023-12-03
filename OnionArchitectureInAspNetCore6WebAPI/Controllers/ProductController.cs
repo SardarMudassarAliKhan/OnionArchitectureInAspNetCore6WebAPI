@@ -1,31 +1,28 @@
 ﻿using DomainLayer.Data;
 using DomainLayer.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RepositoryLayer.IRepository;
 using ServiceLayer.ICustomServices;
 
 namespace OnionArchitectureInAspNetCore6WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class ProductController : ControllerBase
     {
-        private readonly ICustomService<Student> _customService;
+        private readonly ICustomService<Product> _customService;
         private readonly ApplicationDbContext _applicationDbContext;
-        public StudentsController(ICustomService<Student> customService,
+        public ProductController(ICustomService<Product> customService,
             ApplicationDbContext applicationDbContext)
         {
             _customService = customService;
             _applicationDbContext = applicationDbContext;
         }
 
-        [HttpGet(nameof(GetStudentById))]
-        public IActionResult GetStudentById(int Id)
+        [HttpGet(nameof(GetProductById))]
+        public IActionResult GetProductById(int Id)
         {
             var obj = _customService.Get(Id);
-            if (obj == null)
+            if(obj == null)
             {
                 return NotFound();
             }
@@ -34,8 +31,8 @@ namespace OnionArchitectureInAspNetCore6WebAPI.Controllers
                 return Ok(obj);
             }
         }
-        [HttpGet(nameof(GetAllStudent))]
-        public IActionResult GetAllStudent()
+        [HttpGet(nameof(GetAllProducts))]
+        public IActionResult GetAllProducts()
         {
             var obj = _customService.GetAll();
             if(obj == null)
@@ -48,13 +45,13 @@ namespace OnionArchitectureInAspNetCore6WebAPI.Controllers
             }
         }
 
-        [HttpPost(nameof(CreateStudent))]
-        public IActionResult CreateStudent(Student student)
+        [HttpPost(nameof(CreateProduct))]
+        public IActionResult CreateProduct(Product student)
         {
-            if (student!=null)
+            if(student != null)
             {
-              _customService.Insert(student);
-               return Ok("Created Successfully");
+                _customService.Insert(student);
+                return Ok("Created Successfully");
             }
             else
             {
@@ -62,10 +59,10 @@ namespace OnionArchitectureInAspNetCore6WebAPI.Controllers
             }
         }
 
-        [HttpPost(nameof(UpdateStudent))]
-        public IActionResult UpdateStudent(Student student)
+        [HttpPost(nameof(UpdateProduct))]
+        public IActionResult UpdateProduct(Product student)
         {
-            if(student!=null)
+            if(student != null)
             {
                 _customService.Update(student);
                 return Ok("Updated SuccessFully");
@@ -74,13 +71,13 @@ namespace OnionArchitectureInAspNetCore6WebAPI.Controllers
             {
                 return BadRequest();
             }
-            
+
         }
 
-        [HttpDelete(nameof(DeleteStudent))]
-        public IActionResult DeleteStudent(Student student)
+        [HttpDelete(nameof(DeleteProduct))]
+        public IActionResult DeleteProduct(Product student)
         {
-            if(student!=null)
+            if(student != null)
             {
                 _customService.Delete(student);
                 return Ok("Deleted Successfully");
